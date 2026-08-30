@@ -90,10 +90,22 @@ jobs:
         with:
           targets: ${{ matrix.target.triple }}
 
-      - name: Restore Keystore from Secrets
+      - name: Restore or Generate Keystore
         run: |
           if [ -n "${{ secrets.KEYSTORE_BASE64 }}" ]; then
             echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > src-tauri/gpos-release.jks
+            echo "Restored keystore from GitHub secrets."
+          else
+            echo "Generating release keystore fallback..."
+            keytool -genkeypair -v \
+              -keystore src-tauri/gpos-release.jks \
+              -alias gpos \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -storepass gpos12345 \
+              -keypass gpos12345 \
+              -dname "CN=gPOS, OU=POS, O=gPOS, L=Jakarta, ST=Jakarta, C=ID"
           fi
 
       - name: Build Android APK (${{ matrix.target.abi }})
