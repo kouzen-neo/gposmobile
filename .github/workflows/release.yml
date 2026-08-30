@@ -65,7 +65,8 @@ jobs:
           distribution: "temurin"
           java-version: 17
 
-      - name: Setup Android SDK and NDK
+      - name: Setup Android NDK
+        id: setup_ndk
         uses: nttld/setup-ndk@v1
         with:
           ndk-version: r27b
@@ -97,8 +98,11 @@ jobs:
 
       - name: Build Android APK (${{ matrix.target.abi }})
         env:
-          NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
+          NDK_HOME: ${{ steps.setup_ndk.outputs.ndk-path }}
+          ANDROID_NDK_HOME: ${{ steps.setup_ndk.outputs.ndk-path }}
+          ANDROID_HOME: ${{ env.ANDROID_HOME || '/usr/local/lib/android/sdk' }}
         run: |
+          echo "NDK path: $NDK_HOME"
           pnpm tauri android build --target ${{ matrix.target.arch }} --apk --split-per-abi
 
       - name: Locate and Stage Built APK
