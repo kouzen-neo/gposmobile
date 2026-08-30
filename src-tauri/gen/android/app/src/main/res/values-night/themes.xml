@@ -1,0 +1,9 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.gposmobile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:statusBarColor">#f7f4ee</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">#2f6b4f</item>
+        <item name="android:windowLightNavigationBar">false</item>
+    </style>
+</resources>

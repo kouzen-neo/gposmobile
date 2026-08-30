@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160">
+  <defs>
+    <linearGradient id="gpos-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2F6B4F"/>
+      <stop offset="100%" stop-color="#224F3A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base Badge -->
+  <rect width="160" height="160" rx="36" fill="url(#gpos-grad)"/>
+
+  <!-- Subtle Inner Border -->
+  <rect x="6" y="6" width="148" height="148" rx="30" fill="none" stroke="#F7F4EE" stroke-opacity="0.12" stroke-width="2"/>
+
+  <!-- Receipt Ticket Slit / Top Accent -->
+  <path d="M 64 36 L 96 36" stroke="#C2773A" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Geometric "g" & POS Terminal Motif -->
+  <!-- Top Loop of "g" -->
+  <circle cx="78" cy="70" r="24" fill="none" stroke="#F7F4EE" stroke-width="11"/>
+
+  <!-- Vertical Stem & Lower Hook of "g" -->
+  <path d="M 102 70 L 102 104 C 102 118 90 126 74 126 C 60 126 52 120 48 114" 
+        fill="none" 
+        stroke="#F7F4EE" 
+        stroke-width="11" 
+        stroke-linecap="round"/>
+
+  <!-- Little Payment/Receipt Dot Accent -->
+  <circle cx="102" cy="48" r="5" fill="#C2773A"/>
+</svg>
